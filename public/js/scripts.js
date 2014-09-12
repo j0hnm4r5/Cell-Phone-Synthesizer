@@ -18,10 +18,17 @@ function map(current_val, current_min, current_max, new_min, new_max) {
 	return ((current_val - current_min) / (current_max - current_min)) * (new_max - new_min) + new_min;
 }
 
-$body.mousemove(function(e) {
-	var x = e.pageX,
-		y = e.pageY;
+var x, y;
 
+$body.mousemove(function(e) {
+	changeColor(e.pageX, e.pageY);
+});
+
+$body.on('drag', function(e) {
+	changeColor(e.x, e.y)
+});
+
+function changeColor(x, y) {
 	var a = map(x, 0, $body.width(), min_a, max_a),
 		b = map(y, 0, $body.height(), min_b, max_b);
 
@@ -32,7 +39,7 @@ $body.mousemove(function(e) {
 		userRGB = userrgb.RGB(),
 		userHex = userRGB.hex();
 
-	console.log(userHex);
-
 	$body.css('background-color', "#" + userHex);
-});
+}
+
+
