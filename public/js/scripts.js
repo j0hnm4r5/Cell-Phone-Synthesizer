@@ -1,5 +1,8 @@
 var $body = $('body');
 
+// Random color on page load
+$body.css('background-color', '#' + (Math.random() * 0xFFFFFF<<0).toString(16))
+
 // Lab Color Space Ranges
 var max_a = 98.254,
 	min_a = -86.185,
