@@ -1,5 +1,8 @@
 var $body = $('body');
 
+// prevent scrolling on mobile devices
+document.body.addEventListener('touchstart', function(e){e.preventDefault();});
+
 // Random color on page load
 $body.css('background-color', '#' + (Math.random() * 0xFFFFFF<<0).toString(16))
 
