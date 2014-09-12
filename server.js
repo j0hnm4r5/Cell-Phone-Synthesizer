@@ -6,6 +6,6 @@ var express = require('express'),
 app.use(express.static(__dirname + '/public'));
 
 // Launch server
-var server = app.listen(8000, function() {
+var server = app.listen(8100, function() {
 	console.log('Listening on port %d', server.address().port);
 });
