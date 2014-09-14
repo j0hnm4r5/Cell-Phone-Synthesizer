@@ -3,10 +3,6 @@ var $body = $('body');
 // Random color on page load
 $body.css('background-color', '#' + (Math.random() * 0xFFFFFF<<0).toString(16));
 
-console.log(
-	navigator.userAgent
-);
-
 // Open streamer when clicked or tapped
 $('#play').on('tap', function() {
 	var height = $('#mixlr').height();
