@@ -1,5 +1,15 @@
 var $body = $('body');
 
+// Open streamer when clicked
+$('#play').click(function() {
+	var height = $('#mixlr').height();
+	if (height > 0) {
+		$('#mixlr').height(0);
+	} else {
+		$('#mixlr').height(180);
+	}
+})
+
 // prevent scrolling on mobile devices
 document.body.addEventListener('touchstart', function(e){e.preventDefault();});
 
