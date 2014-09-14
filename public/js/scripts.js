@@ -1,20 +1,24 @@
 var $body = $('body');
 
-// Open streamer when clicked
-$('#play').click(function() {
+// Random color on page load
+$body.css('background-color', '#' + (Math.random() * 0xFFFFFF<<0).toString(16));
+
+console.log(
+	navigator.userAgent
+);
+
+// Open streamer when clicked or tapped
+$('#play').on('tap', function() {
 	var height = $('#mixlr').height();
 	if (height > 0) {
 		$('#mixlr').height(0);
 	} else {
 		$('#mixlr').height(180);
 	}
-})
+});
 
 // prevent scrolling on mobile devices
 document.body.addEventListener('touchstart', function(e){e.preventDefault();});
-
-// Random color on page load
-$body.css('background-color', '#' + (Math.random() * 0xFFFFFF<<0).toString(16))
 
 // Lab Color Space Ranges
 var max_a = 98,
@@ -31,12 +35,10 @@ function map(current_val, current_min, current_max, new_min, new_max) {
 	return ((current_val - current_min) / (current_max - current_min)) * (new_max - new_min) + new_min;
 }
 
-$body.mousemove(function(e) {
-	changeColor(e.pageX, e.pageY);
-});
-
-$body.on('drag', function(e) {
-	changeColor(e.x, e.y)
+// Change color on movement
+$body.on('mousemove drag', function(e) {
+	changeColor(e.x, e.y); //for touch
+	changeColor(e.pageX, e.pageY); //for mouse
 });
 
 function changeColor(x, y) {
