@@ -17,10 +17,10 @@ document.body.addEventListener('touchstart', function(e){e.preventDefault();});
 $body.css('background-color', '#' + (Math.random() * 0xFFFFFF<<0).toString(16))
 
 // Lab Color Space Ranges
-var max_a = 98.254,
-	min_a = -86.185,
-	max_b = 94.482,
-	min_b = -107.863;
+var max_a = 98,
+	min_a = -86,
+	max_b = 94,
+	min_b = -107;
 
 // Colorspaces to be used by c0lor
 var labD50 = c0lor.space.lab(c0lor.white.D50);
@@ -43,7 +43,7 @@ function changeColor(x, y) {
 	var a = map(x, 0, $body.width(), min_a, max_a),
 		b = map(y, 0, $body.height(), min_b, max_b);
 
-	// Conversion between colorspaces. This is convoluted, but its the best I have right now.
+	// Conversion between colorspaces, from Lab to Hex. This is convoluted, but its the best I have right now.
 	var userLab = c0lor.Lab(30, a, b),
 		userXYZ = labD50.XYZ(userLab),
 		userrgb = sRGB.rgb(userXYZ),
