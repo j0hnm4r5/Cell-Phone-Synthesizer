@@ -34,7 +34,7 @@ function changeColor(x, y) {
 		b = map(y, 0, $body.height(), min_b, max_b);
 
 	// Conversion between colorspaces. This is convoluted, but its the best I have right now.
-	var userLab = c0lor.Lab(66, a, b),
+	var userLab = c0lor.Lab(30, a, b),
 		userXYZ = labD50.XYZ(userLab),
 		userrgb = sRGB.rgb(userXYZ),
 		userRGB = userrgb.RGB(),
